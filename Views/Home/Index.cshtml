@@ -1,0 +1,84 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojodachi</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    <p class="health">Fullness:@ViewBag.Fullness</p>
+    <p class="health">Happiness:@ViewBag.Happiness</p>   
+    <p class="health">Meals:@ViewBag.Meals</p>   
+    <p class="health">Energy:@ViewBag.Energy</p>
+    <br>
+    <div id=DachiContainer>
+        @{
+            if(ViewBag.Fullness <= 0 || ViewBag.Happiness <= 0)
+            {
+                <img src="~/img/gameOver.jpg" alt="gameOver">
+            }
+            else if (ViewBag.Fullness >= 100 && ViewBag.Happiness >= 100 && ViewBag.Energy >= 100)
+            {
+                <img src="~/img/won.jpeg" alt="won">
+            }
+            else if(ViewBag.Image == 1)
+            {
+                <img src="~/img/angry.jpeg" alt="angry">
+            }
+            else if(ViewBag.Image == 2)
+            {
+                <img src="~/img/rabbitEat.jpg" alt="eat">
+            }
+            else if(ViewBag.Image == 3)
+            {
+                <img src="~/img/play.jpg" alt="play">
+            }
+            else if(ViewBag.Image ==4)
+            {
+                <img src="~/img/meal.jpg" alt="meal">
+            }
+            else if(ViewBag.Image ==5)
+            {
+                <img src="~/img/sleep.jpg" alt="sleep">
+            }
+            else
+            {
+                <img src="~/img/Toki.jpg" alt="Dojodachi"><br>
+            }
+        }
+        <p id="action">@ViewBag.Display</p>
+    </div>
+    <br>
+    <div id="buttons">
+        @{
+            if(ViewBag.Fullness <= 0 || ViewBag.Happiness <= 0)
+            {
+                <button><a href="/reset">Reset</a></button>
+            }
+            else if (ViewBag.Fullness >= 100 && ViewBag.Happiness >= 100 && ViewBag.Energy >= 100)
+            {
+                <button><a href="/reset">Reset</a></button>
+            }
+            else
+            {
+                <button><a href="/feed">Feed</a></button>
+                <button><a href="/play">Play</a></button>
+                <button><a href="/work">Work</a></button>
+                <button><a href="/sleep">Sleep</a></button>
+            }
+        }
+    </div>
+</body>
+</html>
+
+<!-- @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
